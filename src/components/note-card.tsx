@@ -5,12 +5,14 @@ import { X } from 'lucide-react'
 
 type NoteCardProps = {
 	note: {
+		id: string
 		date: Date
 		content: string
 	}
+	deleteNoteCallbackFn: (id: string) => void
 }
 
-export function NoteCard({ note }: NoteCardProps) {
+export function NoteCard({ note, deleteNoteCallbackFn }: NoteCardProps) {
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger
@@ -33,8 +35,8 @@ export function NoteCard({ note }: NoteCardProps) {
 
 				<Dialog.Content
 					className='
-						fixed outline-none overflow-hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-						max-w-[640px] w-full h-[60vh] bg-slate-700 rounded-md flex flex-col
+						fixed inset-0 w-full bg-slate-700 flex flex-col outline-none overflow-hidden 
+						md:max-w-[640px] md:h-[60vh] md:rounded-md md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:inset-auto
 					'
 				>
 					<Dialog.Close className='absolute right-0 top-0 bg-slate-800 p-1.5 text-slate-400 hover:text-slate-100'>
@@ -51,6 +53,7 @@ export function NoteCard({ note }: NoteCardProps) {
 
 					<button
 						type='button'
+						onClick={() => deleteNoteCallbackFn(note.id)}
 						className='w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none font-medium group'
 					>
 						Deseja <span className='text-red-400 group-hover:underline'>apagar essa nota</span>?

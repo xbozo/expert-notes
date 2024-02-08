@@ -13,6 +13,7 @@ export function NewNoteCard({ createNoteCallbackFn }: NewNoteCardProps) {
 	const [showOnboarding, setShowOnboarding] = useState(true)
 	const [content, setContent] = useState('')
 	const [isRecording, setIsRecording] = useState(false)
+	const [showDialog, setShowDialog] = useState(false)
 
 	function handleContentChanged(e: ChangeEvent<HTMLTextAreaElement>) {
 		setContent(e.target.value)
@@ -101,8 +102,8 @@ export function NewNoteCard({ createNoteCallbackFn }: NewNoteCardProps) {
 
 				<Dialog.Content
 					className='
-						fixed outline-none overflow-hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-						max-w-[640px] w-full h-[60vh] bg-slate-700 rounded-md flex flex-col
+						fixed outline-none overflow-hidden inset-0 w-full flex flex-col bg-slate-700
+						md:max-w-[640px] md:h-[60vh] md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:inset-auto md:rounded-md
 					'
 				>
 					<Dialog.Close className='absolute right-0 top-0 bg-slate-800 p-1.5 text-slate-400 hover:text-slate-100'>
@@ -155,7 +156,6 @@ export function NewNoteCard({ createNoteCallbackFn }: NewNoteCardProps) {
 							</button>
 						) : (
 							<button
-								type='button'
 								onClick={handleSaveNote}
 								className='w-full bg-lime-400 py-4 text-center text-sm text-lime-950 outline-none font-medium hover:bg-lime-500'
 							>
