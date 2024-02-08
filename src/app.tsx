@@ -8,6 +8,7 @@ export function App() {
 			<img
 				src={logo}
 				alt='NLW Expert'
+				className='max-h-7'
 			/>
 
 			<form className='w-full'>
